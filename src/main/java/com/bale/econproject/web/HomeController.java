@@ -1,34 +1,32 @@
 package com.bale.econproject.web;
 
+import com.bale.econproject.entity.EconIndctM;
+import com.bale.econproject.repo.jpa.EconIndctMRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
 
     @Autowired
-    ApplicationContext ctx;
+    EconIndctMRepo econIndctMRepo;
 
     @GetMapping
     public ModelAndView home() {
 
         ModelAndView mv = new ModelAndView();
 
+        List<EconIndctM> qryResult = (List<EconIndctM>) econIndctMRepo.findAll();
+
         mv.setViewName("index");
 
-        ArrayList<String> list = new ArrayList<>();
-        for( String bean : ctx.getBeanDefinitionNames() ) {
-            list.add(bean);
-        }
-
-        mv.addObject("beans", list);
+        mv.addObject("indicators", qryResult);
 
         return mv;
     }

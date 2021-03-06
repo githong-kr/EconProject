@@ -38,6 +38,8 @@ dependencies {
     implementation group: 'ch.qos.logback', name: 'logback-classic'
 
     // database
+    runtimeOnly "org.postgresql:postgresql"
+    implementation "org.flywaydb:flyway-core"
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
 

@@ -1,0 +1,2 @@
+insert into econ_indct_m values('T10YIE', '10-Year Breakeven Inflation Rate', 'The breakeven inflation rate is a market-based measure of expected inflation.');
+insert into econ_indct_m values('BAMLH0A0HYM2', 'Credit Spread', 'Credit spread is the difference between the yield (return) of two different debt instruments with the same maturity but different credit ratings.');
