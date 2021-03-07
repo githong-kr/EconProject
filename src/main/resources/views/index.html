@@ -62,7 +62,7 @@
 									<span class="image">-->
 										<img th:src="@{'/images/pic{num}.jpg'(num=${((index.index%12)+1)})}" alt="" />
 									</span>
-                    <a href="#" th:onclick="page_move([[${indicator.id}]], [[${indicator.title}]])">
+                    <a th:href="@{'/economic/indicators/{id}'(id=${indicator.id})}">
                         <h2>[[${indicator.title}]]</h2>
                         <div class="content">
                             <p>[[${indicator.description}]]</p>
@@ -117,27 +117,12 @@
 
 </div>
 
-<form action="/economic/indicator" method="POST" id="pageMove">
-    <input type="hidden" id="id" name="id" value="">
-    <input type="hidden" id="title" name="title" value="">
-</form>
-
 <!-- Scripts -->
 <script th:src="@{../assets/js/jquery.min.js}"></script>
 <script th:src="@{../assets/js/browser.min.js}"></script>
 <script th:src="@{../assets/js/breakpoints.min.js}"></script>
 <script th:src="@{../assets/js/util.js}"></script>
 <script th:src="@{../assets/js/main.js}"></script>
-
-<script>
-    function page_move(id, title) {
-        var form = document.getElementById("pageMove");
-        document.getElementById("id").value = id;
-        document.getElementById("title").value = title;
-
-        form.submit();
-    }
-</script>
 
 </body>
 </html>

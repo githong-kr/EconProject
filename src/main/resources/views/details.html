@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<script th:src="@{/assets/js/splinechart.js}"></script>
+		<script th:src="@{/assets/js/moment.min.js}"></script>
+		<script th:src="@{/assets/js/Chart.min.js}"></script>
+
+		<title>Indicator - E-con Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" th:href="@{/assets/css/main.css}" />
+		<noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}" /></noscript>
+
+	</head>
+	<body class="is-preload" th:onload="splineChart3(/*[[${details}]]*/, /*[[${indicator}]]*/, /*[[${title}]]*/);">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="/" class="logo">
+									<span class="symbol"><img th:src="@{/images/logo.svg}" alt="" /></span><span class="title">E-con</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<h2>Menu</h2>
+					<ul>
+						<li><a href="/">Home</a></li>
+						<!--							<li><a href="details.html">Ipsum veroeros</a></li>-->
+						<li><a th:href="@{/elements.html}">Elements</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>[[${title}]]</h1>
+							<div class="table-wrapper">
+								<table>
+									<thead>
+									<tr>
+										<th>Latest Date</th>
+										<th>Latest Rate</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td>[[${details[details.size-1].date}]]</td>
+										<td>[[${details[details.size-1].rate}]]</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+<!--							<div id="chartContainer" style="auto; width: 100%; " data-aos="fade-up" data-aos-delay="300"></div>-->
+<!--							<div id="chart">-->
+<!--								<div id="responsive-chart"></div>-->
+<!--							</div>-->
+							<canvas id="myChart" width=100% height=auto></canvas>
+<!--							<span class="image main"><img th:src="@{/images/pic13.jpg}" alt="" /></span>-->
+							<br>
+							<span th:if="${indicator == 'BAMLH0A0HYM2'}">
+								<blockquote>
+									<h3>What is Credit Spread?</h3>
+									<p><b>Credit spread</b> is the difference between the yield (return) of two different debt instruments with the same maturity but different credit ratings. In other words, the spread is the difference in returns due to different credit qualities.</p>
+									<p>As Treasury bonds are considered risk-free due to their being backed by the U.S. government, the spread can be used to determine the <b>riskiness</b> of a corporate bond.</p>
+								</blockquote>
+								<blockquote>
+									<h3>Understanding Credit Spread</h3>
+									<p>The spread is used to reflect the additional yield required by an investor for taking on <b>additional credit risk</b>. Credit spreads commonly use the difference in yield between a same-maturity Treasury bond and corporate bond. As Treasury bonds are considered risk-free due to their being backed by the U.S. government, the spread can be used to determine the riskiness of a corporate bond.</p>
+									<p>For example, if the credit spread between a Treasury note or bond and a corporate bond were 0%, it would imply that the corporate bond offers the same yield as the Treasury bond and is risk-free. The higher the spread, the riskier the corporate bond.</p>
+								</blockquote>
+								<blockquote>
+									<h3>Formula for Credit Spread</h3>
+									<pre><code>Credit Spread = Corporate Bond Yield - Treasury Bond Yield</code></pre>
+									<p>Note: The maturity dates of both the corporate bond and Treasury bond must be the <b>same</b>.</p>
+									<p>In addition, it is not uncommon for investors to substitute the Treasury bond yield with a benchmark bond yield of their choice. As such, the formula would look as follows:</p>
+									<pre><code>Credit Spread = Corporate Bond Yield - Benchmark Bond Yield</code></pre>
+									<p>For example, an investor may choose to use an AAA-rated corporate bond yield as the benchmark bond yield.</p>
+								</blockquote>
+								<blockquote>
+									<h3>Movements in Credit Spreads</h3>
+									<p>Credit spreads are not static – they can tighten and narrow over time. The change is generally attributed to <b>economic conditions</b>.</p>
+									<p>For example, in <b>deteriorating market conditions</b>, investors tend to purchase U.S. Treasuries and sell their holdings in corporate bonds. Capital inflows to U.S. Treasuries would increase the price of the treasuries and decrease their yield. On the other hand, capital outflows from corporate bonds would decrease the price and increase the yield on the bonds. In such a scenario, credit spreads between U.S. Treasuries and corporate bonds would widen. The fact is illustrated below:</p>
+									<img style="width:100%; height:auto" th:src="@{/images/credit-spread3.webp}" alt="" />
+								</blockquote>
+								<blockquote>
+									<p>On the other hand, in <b>improving market conditions</b>, investors tend to purchase corporate bonds and sell U.S. treasuries. It is because in improving market conditions, there is lower credit risk in corporate bonds. Capital inflows to corporate bonds would increase the price of the bonds and decrease their yield.</p>
+									<p>On the other hand, capital outflows from U.S. Treasuries would decrease the price and increase the yield on the treasuries. In such a scenario, credit spreads between U.S. Treasuries and corporate bonds would narrow. The fact is illustrated below:</p>
+									<img style="width:100%; height:auto" th:src="@{/images/credit-spread4.webp}" alt="" />
+								</blockquote>
+							</span>
+							<span th:if="${indicator == 'T10YIE'}">
+								<p>The <strong>breakeven inflation</strong> rate is a market-based measure of expected inflation.</p>
+								<p>It is the difference between the yield of a nominal bond and an inflation-linked bond of the same maturity.</p>
+							</span>
+							<span th:if="${indicator == 'T10Y2Y'}">
+								<p>Investors and economists look at <strong>the difference</strong> between the yields of two different U.S. Treasury securities to draw conclusions about where the economy is heading.</p>
+								<p>Investors and economists look at <strong>the difference</strong> between the yields of two different U.S. Treasury securities to draw conclusions about where the economy is heading.</p>
+							</span>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<!--										<li><input type="submit" value="Send" class="primary" /></li>-->
+										<li><input disabled="disabled" type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; E-con Project. All rights reserved</li><li>Design: <a href="/">E-con</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script th:src="@{/assets/js/jquery.min.js}"></script>
+			<script th:src="@{/assets/js/browser.min.js}"></script>
+			<script th:src="@{/assets/js/breakpoints.min.js}"></script>
+			<script th:src="@{/assets/js/util.js}"></script>
+			<script th:src="@{/assets/js/main.js}"></script>
+	</body>
+</html>

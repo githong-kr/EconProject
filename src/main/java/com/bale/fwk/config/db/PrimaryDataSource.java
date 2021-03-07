@@ -60,7 +60,7 @@ public class PrimaryDataSource {
         properties.put("hibernate.physical_naming_strategy", "org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy");
         properties.put("hibernate.cache.use_second_level_cache", false);
         properties.put("hibernate.cache.use_query_cache", false);
-        properties.put("hibernate.show_sql", true);
+        properties.put("hibernate.show_sql", false);
         properties.put("javax.persistence.validation.mode", "none");
 
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
